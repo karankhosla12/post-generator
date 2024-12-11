@@ -130,7 +130,7 @@
             const hashtags = document.getElementById('hashtags').value;
             const dateTime = document.getElementById('dateTime').value;
 
-            const prompt = `Write a post with 50 words for ${brandName || "[Brand Name]"}, ${collaboratorName || "[Collaborator Name]"} describing the ${describe || "[Description]"}. Use similar hashtags including ${hashtags || "[Hashtags]"} and start with a good hook phrase. If time is mentioned in the ${dateTime || "[Day, Date, Time]"} then mention it in the post.`;
+            const prompt = `Write an instagram post with 50 words for ${brandName || "[Brand Name]"}, ${collaboratorName || "[Collaborator Name]"} describing the ${describe || "[Description]"}. Use similar hashtags including ${hashtags || "[Hashtags]"} and start with a good hook phrase. If time is mentioned in the ${dateTime || "[Day, Date, Time]"} then mention it in the post.`;
 
             const payload = {
                 prompt: prompt
