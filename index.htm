@@ -111,6 +111,9 @@
         <label for="dateTime">Day, Date, Time:</label>
         <input type="text" id="dateTime" name="dateTime">
 
+        <label for="additionalInfo">Additional Information:</label>
+        <textarea id="additionalInfo" name="additionalInfo" rows="4" placeholder="Provide any extra details..."></textarea>
+
         <button type="submit">Generate Post</button>
     </form>
 
@@ -129,8 +132,9 @@
             const describe = Array.from(document.querySelectorAll('#describe input:checked')).map(checkbox => checkbox.value).join(', ');
             const hashtags = document.getElementById('hashtags').value;
             const dateTime = document.getElementById('dateTime').value;
+            const additionalInfo = document.getElementById('additionalInfo').value;
 
-            const prompt = `Write an instagram post with 50 words for ${brandName || "[Brand Name]"}, ${collaboratorName || "[Collaborator Name]"} describing the ${describe || "[Description]"}. Use similar hashtags including ${hashtags || "[Hashtags]"} and start with a good hook phrase. If time is mentioned in the ${dateTime || "[Day, Date, Time]"} then mention it in the post.`;
+            const prompt = `Write a post with 50 words for ${brandName || "[Brand Name]"}, ${collaboratorName || "[Collaborator Name]"} describing the ${describe || "[Description]"}. Use similar hashtags including ${hashtags || "[Hashtags]"} and start with a good hook phrase. If time is mentioned in the ${dateTime || "[Day, Date, Time]"} then mention it in the post. Additionally, consider: ${additionalInfo || "[Additional Information]"}.`;
 
             const payload = {
                 prompt: prompt
