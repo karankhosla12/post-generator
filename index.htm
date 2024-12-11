@@ -6,72 +6,60 @@
     <title>Social Media Post Generator</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef2f3;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
             padding: 20px;
-            background-color: #f4f4f9;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
         }
 
         form {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         label {
             font-weight: bold;
+            color: #555;
         }
 
-        input, select, textarea, button {
+        input, textarea, button {
             font-size: 16px;
             padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #007bff;
         }
 
         button {
             background-color: #007bff;
             color: white;
             cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
         }
 
         button:hover {
             background-color: #0056b3;
-        }
-
-        .output-container {
-            margin-top: 20px;
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .output-container textarea {
-            width: 100%;
-            height: 100px;
-            font-size: 16px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        .copy-button {
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .copy-button:hover {
-            background-color: #218838;
         }
 
         .checkbox-group {
@@ -82,45 +70,94 @@
 
         .checkbox-group label {
             font-weight: normal;
+            background-color: #f9f9f9;
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+        .checkbox-group input {
+            margin-right: 8px;
+        }
+
+        .output-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .output-container h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .output-container textarea {
+            width: 100%;
+            height: 120px;
+            font-size: 16px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        .copy-button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .copy-button:hover {
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
-    <h1>Social Media Post Generator</h1>
-    <form id="postForm">
-        <label for="brandName">Brand Name:</label>
-        <input type="text" id="brandName" name="brandName">
+    <div class="container">
+        <h1>Social Media Post Generator</h1>
+        <form id="postForm">
+            <label for="brandName">Brand Name:</label>
+            <input type="text" id="brandName" name="brandName" placeholder="Enter the brand name">
 
-        <label for="collaboratorName">Collaborator Name:</label>
-        <input type="text" id="collaboratorName" name="collaboratorName">
+            <label for="collaboratorName">Collaborator Name:</label>
+            <input type="text" id="collaboratorName" name="collaboratorName" placeholder="Enter the collaborator name">
 
-        <label for="describe">Describe:</label>
-        <div id="describe" class="checkbox-group">
-            <label><input type="checkbox" value="Food"> Food</label>
-            <label><input type="checkbox" value="Event"> Event</label>
-            <label><input type="checkbox" value="Ambiance"> Ambiance</label>
-            <label><input type="checkbox" value="Band"> Band</label>
-            <label><input type="checkbox" value="Music"> Music</label>
-            <label><input type="checkbox" value="Vibe"> Vibe</label>
-            <label><input type="checkbox" value="Business"> Business</label>
+            <label for="describe">Describe:</label>
+            <div id="describe" class="checkbox-group">
+                <label><input type="checkbox" value="Food"> Food</label>
+                <label><input type="checkbox" value="Event"> Event</label>
+                <label><input type="checkbox" value="Ambiance"> Ambiance</label>
+                <label><input type="checkbox" value="Band"> Band</label>
+                <label><input type="checkbox" value="Music"> Music</label>
+                <label><input type="checkbox" value="Vibe"> Vibe</label>
+                <label><input type="checkbox" value="Business"> Business</label>
+            </div>
+
+            <label for="hashtags">Hashtags:</label>
+            <input type="text" id="hashtags" name="hashtags" placeholder="e.g., #foodie #music">
+
+            <label for="dateTime">Day, Date, Time:</label>
+            <input type="text" id="dateTime" name="dateTime" placeholder="e.g., Friday, 9th June, 7 PM">
+
+            <label for="additionalInfo">Additional Information:</label>
+            <textarea id="additionalInfo" name="additionalInfo" rows="4" placeholder="Provide any extra details..."></textarea>
+
+            <button type="submit">Generate Post</button>
+        </form>
+
+        <div class="output-container">
+            <h2>Generated Post:</h2>
+            <textarea id="outputBox" readonly placeholder="Your generated post will appear here..."></textarea>
+            <button class="copy-button" id="copyButton">Copy to Clipboard</button>
         </div>
-
-        <label for="hashtags">Hashtags:</label>
-        <input type="text" id="hashtags" name="hashtags">
-
-        <label for="dateTime">Day, Date, Time:</label>
-        <input type="text" id="dateTime" name="dateTime">
-
-        <label for="additionalInfo">Additional Information:</label>
-        <textarea id="additionalInfo" name="additionalInfo" rows="4" placeholder="Provide any extra details..."></textarea>
-
-        <button type="submit">Generate Post</button>
-    </form>
-
-    <div class="output-container">
-        <h2>Generated Post:</h2>
-        <textarea id="outputBox" readonly></textarea>
-        <button class="copy-button" id="copyButton">Copy to Clipboard</button>
     </div>
 
     <script>
@@ -134,7 +171,7 @@
             const dateTime = document.getElementById('dateTime').value;
             const additionalInfo = document.getElementById('additionalInfo').value;
 
-            const prompt = `Write a post with 50 words for ${brandName || "[Brand Name]"}, ${collaboratorName || "[Collaborator Name]"} describing the ${describe || "[Description]"}. Use similar hashtags including ${hashtags || "[Hashtags]"} and start with a good hook phrase. If time is mentioned in the ${dateTime || "[Day, Date, Time]"} then mention it in the post. Additionally, consider: ${additionalInfo || "[Additional Information]"}.`;
+            const prompt = `Write an instagram post with 50 words for ${brandName || "[Brand Name]"}, ${collaboratorName || "[Collaborator Name]"} describing the ${describe || "[Description]"}. Use similar hashtags including ${hashtags || "[Hashtags]"} and start with a good hook phrase. If time is mentioned in the ${dateTime || "[Day, Date, Time]"} then mention it in the post. Additionally, consider: ${additionalInfo || "[Additional Information]"}.`;
 
             const payload = {
                 prompt: prompt
